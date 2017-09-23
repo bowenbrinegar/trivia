@@ -1,0 +1,37 @@
+body {
+	background: green;
+}
+
+#maincontainer {
+	position: absolute;
+	margin: auto;
+	background: gray;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 800px;
+	height: 500px;
+	border-radius: 5px;
+}
+
+#title {
+	width: 80%;
+	margin: 0 auto;
+	color: white;
+	font-size: 50px;
+}
+
+button {
+	display: block;
+	width: 300px;
+	height: 40px;
+	margin: 5px 0px 0px 0px;
+}
+
+#buttondiv {
+	position: relative;
+	left: 240px;
+	width: 300px;
+	height: 200px;
+}
