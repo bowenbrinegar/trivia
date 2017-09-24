@@ -35,3 +35,85 @@ button {
 	width: 300px;
 	height: 200px;
 }
+
+#first {
+	margin: 0;
+	height: 150px;
+	width: 800px;
+}
+
+.red {
+	background: red;
+}
+
+.green {
+	background: green;
+}
+
+#header {
+	background: orange;
+	height: 100%;
+	width: 100%;
+}
+
+#second {
+	margin: 0;
+	height: 350px;
+	width: 800px;
+	perspective: 400px;
+}
+
+#a {
+	position: absolute;
+	margin: 0;
+	background: red;
+	height: 100%;
+	width: 100%;
+	transition: 3s ease-in-out;
+}
+
+/*https://desandro.github.io/3dtransforms/docs/card-flip.html*/
+
+#card {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	transform-style: preserve-3d;
+	transition: transform 2s;
+}
+
+
+
+
+#card figure {
+	margin: 0;
+	position: absolute;
+	display: block;
+	height: 100%;
+	width: 100%;
+	backface-visibility: hidden;
+
+}
+
+#b {
+	background: purple;
+	
+}
+
+#c {
+	transform: rotateX( 180deg );
+}
+
+#card.flipped {
+	transform: rotateX( 180deg );
+}
+
+
+
+#d {
+	position: absolute;
+	margin: 0;
+	background: white;
+	height: 100%;
+	width: 100%;
+}

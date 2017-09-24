@@ -14,26 +14,44 @@
 <body>
 	
 	<div id='maincontainer'>
-		<h1 id='title'>Totally Trivial Trivia</h1>
-
-		<h3 id='question' class='typeface'></h3>
-		
-		<button id='start' value='start'>Start</button>
-
-		<button id='restart' value='restart'>Restart</button>
-
-		<div id='buttondiv'>
-			<button id='button-1' value='1'><span id='btn1'></span></button>
-			<button id='button-2' value='2'><span id='btn2'></span></button>
-			<button id='button-3' value='3'><span id='btn3'></span></button>
-			<button id='button-4' value='4'><span id='btn4'></span></button>
+		<div id='first'>
+			<div id='header'>
+				<h1 id='title'>Totally Trivial Trivia</h1>
+				<div id="display">10:00</div>
+			</div>
 		</div>
+		
+		<div id='second'>
+			<div id='a'>
+				<button id='start' value='start'>Start</button>
+			</div>
 
-		<button id='next' value='next'>Next</button>
+			<div id='card'>
+				<figure id='b'>
+					<h3 id='question' class='typeface'></h3>
+					<div id='buttondiv'>
+						<button id='button-1' value='1'><span id='btn1'></span></button>
+						<button id='button-2' value='2'><span id='btn2'></span></button>
+						<button id='button-3' value='3'><span id='btn3'></span></button>
+						<button id='button-4' value='4'><span id='btn4'></span></button>
+					</div>
+				</figure>
 
-		<h2 id='result'></h2>
+				<figure id='c'>
+					<h2 id='wrRecord'></h2>
+					<button id='next' value='next'>Next</button>
+				</figure>
+			</div>
+
+			<div id='d'>
+				<button id='restart' value='restart'>Restart</button>
+			</div>
+		</div>
+		
 
 	</div>
+
+
 
 
 
