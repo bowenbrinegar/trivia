@@ -5,6 +5,8 @@
 	<title>Document</title>
 	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 	<link rel='stylesheet' type='text/css' href='assets/css/style.css'>
 
@@ -13,17 +15,23 @@
 	
 	<div id='maincontainer'>
 		<h1 id='title'>Totally Trivial Trivia</h1>
-		
-		<h3 id='time' class='typeface'>Time Remaining: </h3>
 
-		<h3 id='question' class='typeface'>What is love?</h3>
+		<h3 id='question' class='typeface'></h3>
+		
+		<button id='start' value='start'>Start</button>
+
+		<button id='restart' value='restart'>Restart</button>
 
 		<div id='buttondiv'>
-			<button id='button-1'>Hello</button>
-			<button id='button-2'>Hello</button>
-			<button id='button-3'>Hello</button>
-			<button id='button-4'>Hello</button>
+			<button id='button-1' value='1'><span id='btn1'></span></button>
+			<button id='button-2' value='2'><span id='btn2'></span></button>
+			<button id='button-3' value='3'><span id='btn3'></span></button>
+			<button id='button-4' value='4'><span id='btn4'></span></button>
 		</div>
+
+		<button id='next' value='next'>Next</button>
+
+		<h2 id='result'></h2>
 
 	</div>
 
@@ -41,8 +49,6 @@
 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-	<script type="text/javascript" src="assets/javascript/game.js"></script>
+	<script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
 </html>
