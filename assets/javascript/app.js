@@ -1,21 +1,21 @@
 let questions = {
 		firstset: {
-				1: {
+				0: {
 					question: 'What is your favorite color?',
 					choices: ['blue','yellow','green','purple'],
 					right: 0,
 				},
-				2: {
+				1: {
 					question: 'What is your favorite song?',
 					choices: ['row your boat','god save the queen','purple haze','piano man'],
 					right: 0,
 				},
-				3: {
+				2: {
 					question: 'What is your favorite painting?',
 					choices: ['scream','stary night','the monelisa'],
 					right: 2,
 				},
-				4: {
+				3: {
 					question: 'What is your favorite song?',
 					choices: ['row your boat','god save the queen','purple haze','piano man'],
 					right: 0,
@@ -25,7 +25,7 @@ let questions = {
 
 
 
-var index = 1;
+var index = 0;
 var correct = 0;
 var wrong = 0;
 
@@ -33,14 +33,21 @@ var wrRecord;
 
 var intervalId;
 var clockRunning = false;
-var time = 10;
+var time = 300;
 
+$('#a').show();
+$('#card').hide();
+$('#d').hide();
+
+
+
+//stopwatch from in-class excersize
 
 var stopwatch = {
 
   reset: function() {
-    time = 600;
-    $("#display").html("10:00");
+    time = 300;
+    $("#display").html("5:00");
   },
 
   start: function() {
@@ -70,14 +77,17 @@ var stopwatch = {
       seconds = "0" + seconds;
     }
     if (minutes === 0) {
-      minutes = "00";
+      minutes = "0";
     }
     else if (minutes < 10) {
-      minutes = "0" + minutes;
+      minutes =  minutes;
     }
     return minutes + ":" + seconds;
   }
 };
+
+
+// ends game when clock hits zero
 
 setInterval(function timer() {
 	if (time === 0) {
@@ -86,8 +96,12 @@ setInterval(function timer() {
 	$('#d').fadeIn(2000)
 }} ,500)
 
-$('#card').hide();
-$('#d').hide();
+setInterval(function() {
+	$('#counter').html('')
+	$('#counter').append(correct+"/"+index)
+}, 1)
+
+// on.click events for all other buttons
 
 $('#maincontainer').on('click', 'button', function() {
 	var value = $(this).val();
@@ -98,24 +112,26 @@ $('#maincontainer').on('click', 'button', function() {
 		update();
 	}
 	if (value === 'next') {
-		if (index <= 4) {
+		if (index <= 3) {
 			update();
 			stopwatch.start();
 			$('#card').toggleClass('flipped');
 		}
-		if (index === 5) {
+		if (index === 4) {
 			$('#card').toggleClass('flipped').fadeOut(2000)
 			$('#d').fadeIn(2000)
 		}
 	}
 	if (value === 'restart') {
-		index = 1;
+		index = 0;
+		correct = 0;
 		stopwatch.reset();
 		$('#d').fadeOut(2000);
 		$('#a').fadeIn(2000);
-		$('#card').toggleClass('flipped');
 	}
 })
+
+// on.click events for trivia answer buttons
 
 $('#buttondiv').on('click', 'button', function() {
 		var value = $(this).val();
@@ -149,6 +165,7 @@ $('#buttondiv').on('click', 'button', function() {
 })
 
 
+// updates trivia questions and choices
 
 function update() {
 
@@ -165,7 +182,29 @@ function update() {
 		$('#btn2').append(questions.firstset[index].choices[1])
 		$('#btn3').append(questions.firstset[index].choices[2])
 		$('#btn4').append(questions.firstset[index].choices[3])
+
+		if (questions.firstset[index].choices.length === 4) {
+				$('#button-1').show()
+				$('#button-2').show()
+				$('#button-3').show()
+				$('#button-4').show()
+		}
+		else if (questions.firstset[index].choices.length === 3) {
+				$('#button-1').show()
+				$('#button-2').show()
+				$('#button-3').show()
+				$('#button-4').hide()
+		}
+		else if (questions.firstset[index].choices.length === 2) {
+				$('#button-1').show()
+				$('#button-2').show()
+				$('#button-3')
+				$('#button-4').hide()
+		}
+		
 }
+
+// update correct and wrong
 
 function wr() {
 		$('#card').toggleClass('flipped')

@@ -15,40 +15,33 @@ body {
 	border-radius: 5px;
 }
 
-#title {
-	width: 80%;
-	margin: 0 auto;
-	color: white;
-	font-size: 50px;
-}
-
-button {
-	display: block;
-	width: 300px;
-	height: 40px;
-	margin: 5px 0px 0px 0px;
-}
-
-#buttondiv {
-	position: relative;
-	left: 240px;
-	width: 300px;
-	height: 200px;
-}
-
 #first {
 	margin: 0;
-	height: 150px;
+	height: 100px;
 	width: 800px;
 }
 
-.red {
-	background: red;
+#title {
+	position: fixed ;
+	width: 10%;
+	margin: 5px 0px 0px 15px;
+	color: white;
+	font-size: 80px;
 }
 
-.green {
-	background: green;
+.time {
+	position: fixed;
+	width: 10%;
+	margin: 15px 0px 0px 630px;
 }
+
+#counter {
+	position: fixed;
+	width: 10%;
+	margin: 15px 0px 0px 540px;
+}
+
+
 
 #header {
 	background: orange;
@@ -58,7 +51,7 @@ button {
 
 #second {
 	margin: 0;
-	height: 350px;
+	height: 400px;
 	width: 800px;
 	perspective: 400px;
 }
@@ -66,10 +59,14 @@ button {
 #a {
 	position: absolute;
 	margin: 0;
-	background: red;
+	background: purple;
 	height: 100%;
 	width: 100%;
-	transition: 3s ease-in-out;
+}
+
+#start {
+	position: fixed;
+	margin: 330px 0px 0px 30px;
 }
 
 /*https://desandro.github.io/3dtransforms/docs/card-flip.html*/
@@ -82,9 +79,6 @@ button {
 	transition: transform 2s;
 }
 
-
-
-
 #card figure {
 	margin: 0;
 	position: absolute;
@@ -96,13 +90,36 @@ button {
 }
 
 #b {
-	background: purple;
-	
+	background: white;
+}
+
+#wrRecord {
+	position: absolute;
+	font-size: 80px;
+	color: white;
+	margin: 100px 0px 0px 250px;
+}
+
+#next {
+	position: absolute;
+	margin: 200px 0px 0px 250px;
+}
+
+#question {
+	position: fixed;
+	margin: 20px 0px 0px 25px;
+}
+
+#buttondiv {
+	position: absolute;
+	margin: 110px 0px 0px 50px;
 }
 
 #c {
 	transform: rotateX( 180deg );
 }
+
+
 
 #card.flipped {
 	transform: rotateX( 180deg );
@@ -110,10 +127,41 @@ button {
 
 
 
+.red {
+	background: red;
+}
+
+.green {
+	background: green;
+}
+
 #d {
 	position: absolute;
 	margin: 0;
-	background: white;
+	background: purple;
 	height: 100%;
 	width: 100%;
 }
+
+#gameover {
+	position: fixed;
+	margin: 150px 0px 0px 25px;
+	font-size: 80px;
+	color: white;
+}
+
+#restart {
+	position: fixed;
+	margin: 330px 0px 0px 30px;
+}
+
+
+
+button {
+	display: block;
+	width: 300px;
+	height: 40px;
+	margin: 5px 0px 0px 0px;
+}
+
+
