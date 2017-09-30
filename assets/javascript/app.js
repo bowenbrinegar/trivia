@@ -1,145 +1,132 @@
-let questions = {
-		firstset: {
-				0: {
-					question: 'What is your favorite color?',
-					choices: ['blue','yellow','green','purple'],
-					right: 0,
-				},
-				1: {
-					question: 'What is your favorite song?',
-					choices: ['row your boat','god save the queen','purple haze','piano man'],
-					right: 0,
-				},
-				2: {
-					question: 'What is your favorite painting?',
-					choices: ['scream','stary night','the monelisa'],
-					right: 2,
-				},
-				3: {
-					question: 'What is your favorite song?',
-					choices: ['row your boat','god save the queen','purple haze','piano man'],
-					right: 0,
-				}
-		}
-}
-
-
+$(document).ready(function() {
 
 var index = 0;
 var correct = 0;
 var wrong = 0;
 
 var wrRecord;
+var key;
+var answer;
 
 var intervalId;
 var clockRunning = false;
-var time = 300;
+var clockRunning2 = false;
+var time = 0;
+var time2 = 30;
 
 $('#a').show();
 $('#card').hide();
 $('#d').hide();
 
 
-
-//stopwatch from in-class excersize
-
-var stopwatch = {
+var countdown = {
 
   reset: function() {
-    time = 300;
-    $("#display").html("5:00");
+    time2 = 30;
+    $('.time2').html(time2)
   },
 
   start: function() {
-    if (!clockRunning) {
-        intervalId = setInterval(stopwatch.count, 1000);
-        clockRunning = true;
+    if (!clockRunning2) {
+        intervalId = setInterval(countdown.count, 1000);
+        clockRunning2 = true;
     }
   },
 
   stop: function() {
     clearInterval(intervalId);
-    clockRunning = false;
+    clockRunning2 = false;
   },
 
   count: function() {
-    time--;
-    var converted = stopwatch.timeConverter(time);
-    $("#display").html(converted);
+    time2--;
+    $(".time2").html(time2);
   },
+}
 
-  timeConverter: function(t) {
-
-    var minutes = Math.floor(t / 60);
-    var seconds = t - (minutes * 60);
-
-    if (seconds < 10) {
-      seconds = "0" + seconds;
-    }
-    if (minutes === 0) {
-      minutes = "0";
-    }
-    else if (minutes < 10) {
-      minutes =  minutes;
-    }
-    return minutes + ":" + seconds;
-  }
-};
-
+$('.time2').html(time2)
 
 // ends game when clock hits zero
 
 setInterval(function timer() {
-	if (time === 0) {
-	stopwatch.stop();
-	$('#card').fadeOut(2000);
-	$('#d').fadeIn(2000)
-}} ,500)
+	if (time2 === 1) {
+		wrong++;
+		wrRecord = 'Wrong!';
+		wr();
+	}
+	if (time2 === 0) {
+		countdown.stop();
+		countdown.reset();
+	}
+} , 1000)
+
 
 setInterval(function() {
 	$('#counter').html('')
 	$('#counter').append(correct+"/"+index)
 }, 1)
 
+
 // on.click events for all other buttons
+$('#introcontainer').on('click', 'button', function() { 
+	var value = $(this).val();
+	switch(value) {
+				case 'firstset': key = 'firstset';
+					break;
+				case 'secondset': key = 'secondset';
+					break;
+				case 'thirdset': key = 'thirdset';
+					break;
+				case 'forthset': key = 'forthset';
+					break;
+				default:
+          break;
+	};
+	$('#a').fadeOut(2000);
+	$('#card').fadeIn(2000);
+	$('#b').show();
+	$('#a').show();
+	countdown.start();
+	update();
+});
 
 $('#maincontainer').on('click', 'button', function() {
 	var value = $(this).val();
-	if (value === 'start') {
-		$('#a').fadeOut(2000)
-		$('#card').fadeIn(2000)
-		stopwatch.start();
-		update();
-	}
 	if (value === 'next') {
-		if (index <= 3) {
+		if (index <= questions[key].leng - 1) {
 			update();
-			stopwatch.start();
+			countdown.start();
 			$('#card').toggleClass('flipped');
 		}
-		if (index === 4) {
-			$('#card').toggleClass('flipped').fadeOut(2000)
-			$('#d').fadeIn(2000)
+		if (index === questions[key].leng) {
+			$('#b').fadeOut(2000);
+			$('#d').fadeIn(2000);
+			// flipped();
 		}
+		$('#buttondiv').removeClass('pointer');
 	}
 	if (value === 'restart') {
 		index = 0;
 		correct = 0;
-		stopwatch.reset();
+		countdown.reset();
 		$('#d').fadeOut(2000);
 		$('#a').fadeIn(2000);
+		$('#card').toggleClass('flipped').hide();
 	}
 })
+
 
 // on.click events for trivia answer buttons
 
 $('#buttondiv').on('click', 'button', function() {
 		var value = $(this).val();
-		var answer;
 		switch(value) {
 			   case '1': answer = 0;
 			   break;
 			   case '2': answer = 1;
+			   					 if (key === 'thirdset') {
+			   					 	answer = 10;
+			   					 }
 			   break;
 			   case '3': answer = 2;
 			   break;
@@ -148,27 +135,31 @@ $('#buttondiv').on('click', 'button', function() {
 			   default:
 			   break;
 		}
-		if (answer === questions.firstset[index].right) {
-				stopwatch.stop();
+		if (answer === 10) {
+			var val = false;
+			while(!val) {
+				alert("Wrong Choice")
+			}
+		}
+		if (answer === questions[key][index].right) {
 				correct++;
 				wrRecord = 'Correct!';
-				index++;
 				wr();
 		}
 		else {
-				stopwatch.stop();
 				wrong++;
 				wrRecord = 'Wrong!';
-				index++;
 				wr();
 		}
+		countdown.stop()
+		countdown.reset();
+		$('#buttondiv').addClass('pointer')
 })
 
 
 // updates trivia questions and choices
 
 function update() {
-
 		$('#question').html('')
 
 		$('#btn1').html('')
@@ -176,29 +167,26 @@ function update() {
 		$('#btn3').html('')
 		$('#btn4').html('')
 
-		$('#question').append(questions.firstset[index].question)
+		$('#question').append(questions[key][index].question)
 
-		$('#btn1').append(questions.firstset[index].choices[0])
-		$('#btn2').append(questions.firstset[index].choices[1])
-		$('#btn3').append(questions.firstset[index].choices[2])
-		$('#btn4').append(questions.firstset[index].choices[3])
+		$('#btn1').append(questions[key][index].choices[0])
+		$('#btn2').append(questions[key][index].choices[1])
+		$('#btn3').append(questions[key][index].choices[2])
+		$('#btn4').append(questions[key][index].choices[3])
 
-		if (questions.firstset[index].choices.length === 4) {
-				$('#button-1').show()
+		if (questions[key][index].choices.length === 4) {
 				$('#button-2').show()
 				$('#button-3').show()
 				$('#button-4').show()
 		}
-		else if (questions.firstset[index].choices.length === 3) {
-				$('#button-1').show()
+		else if (questions[key][index].choices.length === 3) {
 				$('#button-2').show()
 				$('#button-3').show()
 				$('#button-4').hide()
 		}
-		else if (questions.firstset[index].choices.length === 2) {
-				$('#button-1').show()
+		else if (questions[key][index].choices.length === 2) {
 				$('#button-2').show()
-				$('#button-3')
+				$('#button-3').hide()
 				$('#button-4').hide()
 		}
 		
@@ -212,6 +200,14 @@ function wr() {
 		$('#wrRecord').html('')	
 		$('#wrRecord').append(wrRecord)
 
+		var image = $('<img id="image" >').attr("src", questions[key][index].image)
+
+		$('#imagebox').html('')
+		$('#imagebox').append(image)
+
+		$('#answer').html('')
+		$('#answer').append('Answer: ', questions[key][index].answer)
+
 		if (wrRecord === 'Correct!') {
 			$('#c').removeClass('red')
 			$('#c').addClass('green')
@@ -221,11 +217,18 @@ function wr() {
 			$('#c').addClass('red')
 		}
 
+		index++;
 				
 }
 
 
+var gif = $("<img class='box3'>").attr("src", response.data[i].images.fixed_width.url)
+    			var still = $("<img class='box3'>").attr("src", response.data[i].images.fixed_width_still.url)
+    			var rating = $("<h1 class='rating'>").append(response.data[i].rating)
+    			var div2 = $("<div class='gif box3").append(rating).append(gif)
+    			var div1 = $("<div class='wrap'>").append(still).append(div2);
+    			$('.column1').append(div1)
 
 
-
+})
 

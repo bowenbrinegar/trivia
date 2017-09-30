@@ -2,17 +2,22 @@ body {
 	background: green;
 }
 
+.pointer {
+	pointer-events: none;
+}
+
 #maincontainer {
 	position: absolute;
 	margin: auto;
-	background: gray;
+	background: black;
 	left: 0;
 	right: 0;
 	top: 0;
 	bottom: 0;
 	width: 800px;
 	height: 500px;
-	border-radius: 5px;
+	border-top: none;
+	border-radius: 20px;
 }
 
 #first {
@@ -21,12 +26,37 @@ body {
 	width: 800px;
 }
 
-#title {
-	position: fixed ;
-	width: 10%;
-	margin: 5px 0px 0px 15px;
+/* https://codepen.io/jamesbarnett/pen/kfmKa */
+
+.marquee {
+  height: 100px;
+  width: 660px;
+
+  overflow: hidden;
+  position: absolute;
+  margin: 0px 0px 0px 15px;
+}
+
+.marquee div {
+  display: block;
+  width: 100%;
+  height: 100px;
+
+  position: absolute;
+  overflow: hidden;
+
+  animation: marquee 10s linear infinite;
+}
+
+.marquee span {
+  width: 100%;
 	color: white;
-	font-size: 80px;
+	font-size: 70px;
+}
+
+@keyframes marquee {
+  0% { right: 100%; }
+  100% { right: -100%; }
 }
 
 .time {
@@ -35,13 +65,20 @@ body {
 	margin: 15px 0px 0px 630px;
 }
 
-#counter {
-	position: fixed;
+.time2 {
+	position: absolute;
 	width: 10%;
-	margin: 15px 0px 0px 540px;
+	font-size: 80px;
+	margin: 5px 0px 0px 690px;
 }
 
-
+#counter {
+	position: absolute;
+	width: 10%;
+	font-size: 50px;
+	color: white;
+  margin: 195px 0px 0px 710px;
+}
 
 #header {
 	background: orange;
@@ -53,7 +90,7 @@ body {
 	margin: 0;
 	height: 400px;
 	width: 800px;
-	perspective: 400px;
+	perspective: 1000px;
 }
 
 #a {
@@ -66,7 +103,22 @@ body {
 
 #start {
 	position: fixed;
-	margin: 330px 0px 0px 30px;
+	margin: 330px 0px 0px 650px;
+}
+
+#introcontainer {
+	position: absolute;
+	width: 60%;
+	height: 60%;
+	margin: 80px 0px 0px 190px;
+}
+
+#section1 {
+	float: left;
+}
+
+#section2 {
+	float: left;
 }
 
 /*https://desandro.github.io/3dtransforms/docs/card-flip.html*/
@@ -93,39 +145,68 @@ body {
 	background: white;
 }
 
-#wrRecord {
+#wrRecord1 {
 	position: absolute;
+	width: 40%;
+	text-align: right;
+	margin: 280px 0px 0px 460px;
+}
+
+#wrRecord {
 	font-size: 80px;
+	text-align: right;
 	color: white;
-	margin: 100px 0px 0px 250px;
 }
 
 #next {
 	position: absolute;
-	margin: 200px 0px 0px 250px;
+	margin: 255px 0px 0px 645px;
+}
+
+#answer {
+	position: absolute;
+	margin: 10px 0px 0px 20px;
+	font-size: 40px;
+	color: white;
+}
+
+#imagebox {
+	position: absolute;
+	overflow: hidden;
+	margin: 60px 0px 0px 20px;
+	width: 300px;
+	height: 200px;
+}
+
+#image {
+	width: 300px;
+	height: 200px;
+}
+
+#question1 {
+	position: absolute;
+	width: 90%;
+	margin: 40px 0px 0px 40px;
+	text-align: center;
 }
 
 #question {
-	position: fixed;
-	margin: 20px 0px 0px 25px;
+	text-align: center;
 }
 
 #buttondiv {
 	position: absolute;
-	margin: 110px 0px 0px 50px;
+	margin: 110px 0px 0px 250px;
+	vertical-align: center;
 }
 
 #c {
 	transform: rotateX( 180deg );
 }
 
-
-
 #card.flipped {
 	transform: rotateX( 180deg );
 }
-
-
 
 .red {
 	background: red;
@@ -155,13 +236,94 @@ body {
 	margin: 330px 0px 0px 30px;
 }
 
+/* buttons */
 
+.startstopnext {
+	padding: 0;
+	margin: 5px 5px 5px 5px;
+	border: none;
+	border-radius: 5px;
+	background: white;
+	font-size: 30px;
+	font-weight: bold;
+	text-align: center;
+	outline: none;
+	width: 130px;
+	height: 50px;
+}
 
-button {
+.startstopnext:hover {
+	background: black;
+	color: white;
+}
+
+.answerblock {
 	display: block;
+	border: 4px solid black;
+	border-radius: 10px;
+	background: white;
+	color: black;
+	outline: none;
 	width: 300px;
 	height: 40px;
-	margin: 5px 0px 0px 0px;
+	margin: 10px 0px 0px 0px;
 }
+
+.answerblock:hover {
+	background: black;
+	color: white;
+}
+
+.choices {
+	padding: 0;
+	margin: 5px 5px 5px 5px;
+	border: none;
+	border-radius: 5px;
+	background: green;
+	outline: none;
+	width: 200px;
+	height: 100px;
+	transition: 1s;
+	overflow: hidden;
+}
+
+
+/*https://stackoverflow.com/questions/14263594/how-to-show-text-on-image-when-hovering*/
+
+.button__wrap {
+  position: relative;
+  float: left;
+  margin: 5px 5px 5px 5px;
+  border: none;
+	border-radius: 5px;
+  width: 200px;
+	height: 100px;
+}
+
+.button__description {
+  position: absolute;
+  text-align: center;
+  line-height: 100px;
+  border-radius: 5px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: black;
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+
+  /* transition effect. not necessary */
+  transition: opacity .2s, visibility .2s;
+}
+
+.button__wrap:hover .button__description {
+  visibility: visible;
+  opacity: 1;
+	transition: box-shadow 0.3s ease-in-out;
+	transition: 1s;
+}
+
 
 

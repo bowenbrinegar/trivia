@@ -16,37 +16,68 @@
 	<div id='maincontainer'>
 		<div id='first'>
 			<div id='header'>
-				<h1 id='title'>TRIVIA</h1>
-				<h2 class='parts time'>Time: <span id="display" class='parts'>5:00</span></h2>
-				<h2 id='counter' class='parts'></h2>
+					<div class="marquee">
+					  <div>
+					    <span>TRIVIA</span>
+					  </div>
+					</div>
+				<h2 class='parts time2'></h2>
 			</div>
 		</div>
 		
 		<div id='second'>
 			<div id='a'>
-				<button id='start' value='start'>Start</button>
+				<div id='introcontainer'>
+					<div id='section1'>
+						<div class="button__wrap">
+						  <img id='firstset' class='choices' src='assets/images/art.jpg'>
+						  <button class="button__description choices" value='firstset'>Art</button>
+						</div>
+						<div class="button__wrap">
+						  <img id='secondset' class='choices' src='assets/images/don.jpg'>
+						  <button class="button__description choices" value='secondset'>Don Quixote</button>
+						</div>						
+					</div>
+					<div id='section2'>
+						<div class="button__wrap">
+						  <img id='thirdset' class='choices' src='assets/images/caution.jpg'>
+						  <button class="button__description choices" value='thirdset'>Caution</button>
+						</div>	
+						<div class="button__wrap">
+						  <img id='forthset' class='choices' src='assets/images/animals.jpg'>
+						  <button class="button__description choices" value='forthset'>Animals</button>
+						</div>	
+					</div>
+				</div>
 			</div>
 
 			<div id='card'>
 				<figure id='b'>
-					<h3 id='question' class='typeface'></h3>
+					<div id='question1'>
+						<h3 id='question' class='typeface'></h3>
+					</div>
 					<div id='buttondiv'>
-						<button id='button-1' value='1'><span id='btn1'></span></button>
-						<button id='button-2' value='2'><span id='btn2'></span></button>
-						<button id='button-3' value='3'><span id='btn3'></span></button>
-						<button id='button-4' value='4'><span id='btn4'></span></button>
+						<button id='button-1' class='answerblock' value='1'><span id='btn1'></span></button>
+						<button id='button-2' class='answerblock' value='2'><span id='btn2'></span></button>
+						<button id='button-3' class='answerblock' value='3'><span id='btn3'></span></button>
+						<button id='button-4' class='answerblock' value='4'><span id='btn4'></span></button>
 					</div>
 				</figure>
 
 				<figure id='c'>
-					<h2 id='wrRecord'></h2>
-					<button id='next' value='next'>Next</button>
+					<div id='wrRecord1'>
+						<h2 id='wrRecord'></h2>
+					</div>
+					<h3 id='answer'></h3>
+					<div id='imagebox'></div>
+					<h2 id='counter' class='parts'></h2>
+					<button id='next' class='startstopnext' value='next'>Next</button>
 				</figure>
 			</div>
 
 			<div id='d'>
 				<h1 id='gameover'>Game Over!!</h1>
-				<button id='restart' value='restart'>Restart</button>
+				<button id='restart' class='startstopnext' value='restart'>Restart</button>
 			</div>
 		</div>
 		
@@ -68,6 +99,8 @@
 
 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	
+	<script type="text/javascript" src="assets/javascript/questions.js"></script>
 
 	<script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
