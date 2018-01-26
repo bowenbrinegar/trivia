@@ -12,7 +12,7 @@ app. Utilizing JQuery can end up looking a lot like this --------
 ![alt text](https://i.ytimg.com/vi/GVDGuCjog_0/maxresdefault.jpg)
 
 
-That being said, you can learn a lot how Javascript works through trying to connect all the calls. \
+That being said, you can learn a lot on how Javascript works through trying to connect all the calls. \
 
 ### CSS Animation and Marquee
 Having worked with Quizlet in my college studies, the older version had a nice flip animation on the cards \
